@@ -1,0 +1,57 @@
+name: CI - Compilation & Norminette
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  norminette:
+    name: Norminette Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install norminette
+        run: pip install norminette
+
+      - name: Run norminette
+        run: |
+          FILES=$(find . -path "./.git" -prune -o \( -name "*.c" -o -name "*.h" \) -print)
+          if [ -z "$FILES" ]; then
+            echo "No .c or .h files found, skipping norminette check."
+            exit 0
+          fi
+          norminette $FILES
+
+  compilation:
+    name: Compilation Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get install -y gcc make libreadline-dev
+
+      - name: Compile with make
+        run: |
+          SRCS=$(find . -path "./.git" -prune -o -name "*.c" -print)
+          if [ -z "$SRCS" ]; then
+            echo "No source files found, skipping compilation check."
+            exit 0
+          fi
+          make
+          if [ ! -f minishell ]; then
+            echo "Compilation failed: minishell binary not found."
+            exit 1
+          fi
+          echo "Compilation successful: minishell binary found."
