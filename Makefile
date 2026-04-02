@@ -6,7 +6,7 @@
 #    By: selevray <selevray@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/30 14:50:38 by selevray          #+#    #+#              #
-#    Updated: 2026/03/30 15:30:37 by selevray         ###   ########.fr        #
+#    Updated: 2026/03/31 15:10:27 by selevray         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME		= minishell
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -Wlpedantic
 INCLUDES	= -I includes -I libft
 
 RM			= rm -rf
@@ -110,7 +110,7 @@ fclean: clean
 
 re: fclean all
 
-debug: CFLAGS += -g3 -fsanitize=address
+debug: CFLAGS += -g3 -fsanitize=address -Wlpedantic
 debug: re
 	@echo "$(YELLOW)⚠ compiled with -g3 -fsanitize=address (don't use with valgrind)$(RESET)"
 
