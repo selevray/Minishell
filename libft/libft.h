@@ -6,7 +6,7 @@
 /*   By: selevray <selevray@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 14:00:00 by selevray          #+#    #+#             */
-/*   Updated: 2026/03/02 10:35:33 by selevray         ###   ########.fr       */
+/*   Updated: 2026/04/02 12:41:52 by selevray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_print_char(char c);
 int		ft_putstr(char *string);
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 void	ft_putstr_fd(char *s, int fd);
 ssize_t	ft_safe_write(int fd, const void *buf, size_t count);
 char	**ft_split(char const *str, char charset);

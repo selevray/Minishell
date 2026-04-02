@@ -6,7 +6,7 @@
 /*   By: selevray <selevray@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 11:03:20 by selevray          #+#    #+#             */
-/*   Updated: 2026/04/02 11:37:11 by selevray         ###   ########.fr       */
+/*   Updated: 2026/04/02 13:55:00 by selevray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,8 @@ void	*gc_alloc_persistent(t_gc *gc, size_t size)
 	gc->persistent.head = node;
 	return (ptr);
 }
-void	gc_reset(t_gc *gc)
-{
-	free_arena(&gc->arena);
-}
-static void	free_arena(t_arena *arena)
+
+void	free_arena(t_arena *arena)
 {
 	t_arena_node	*node;
 	t_arena_node	*tmp;
@@ -69,9 +66,4 @@ static void	free_arena(t_arena *arena)
 		node = tmp;
 	}
 	arena->head = NULL;
-}
-void	gc_destroy(t_gc *gc)
-{
-	free_arena(&gc->arena);
-	free_arena(&gc->persistent);
 }

@@ -45,7 +45,8 @@ SRCS = ft_atoi.c \
 	ft_substr.c \
 	ft_tolower.c \
 	ft_toupper.c \
-	safe_write.c
+	safe_write.c \
+	ft_realloc.c
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))

@@ -6,7 +6,7 @@
 #    By: selevray <selevray@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/30 14:50:38 by selevray          #+#    #+#              #
-#    Updated: 2026/03/31 15:10:27 by selevray         ###   ########.fr        #
+#    Updated: 2026/04/02 14:17:00 by selevray         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,22 +15,25 @@
 NAME		= minishell
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -Wlpedantic
+CFLAGS		= -Wall -Wextra -Werror -Wpedantic
 INCLUDES	= -I includes -I libft
 
 RM			= rm -rf
 
 #  DIRECTORIES
 
-SRC_DIR		= src
+SRC_DIR		= srcs
 OBJ_DIR		= objs
 LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
 #  SOURCE FILES — prefixed by module
 
-# ── GC (Arena Collector) 
-SRC_GC		= 
+# ── GC (Arena Collector)
+SRC_GC		= gc/gc_alloc.c \
+			  gc/gc_fd.c \
+			  gc/gc_lifecycle.c \
+			  gc/gc_pids.c
 
 # ── Lexer 
 SRC_LEXER	= 
@@ -57,7 +60,7 @@ SRC_SIGNAL	=
 SRC_UTILS	= 
 
 # ── Main 
-SRC_MAIN	= ms_main.c
+SRC_MAIN	= gc/test_main_gc.c
 
 #  AGGREGATE
 
@@ -98,6 +101,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "$(CYAN)  compiling $(YELLOW)$<$(RESET)"
 
+test_gc: $(LIBFT)
+	@$(CC) $(CFLAGS) $(INCLUDES) \
+		$(addprefix $(SRC_DIR)/, $(SRC_GC) gc/test_main_gc.c) \
+		-L$(LIBFT_DIR) -lft -o test_gc
+	@echo "$(GREEN)✓ test_gc compiled$(RESET)"
+
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(RM) $(OBJ_DIR)
@@ -116,4 +125,4 @@ debug: re
 
 #  PHONY
 
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re debug test_gc
