@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   gc.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selevray <selevray@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gujarry <gujarry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 15:03:28 by selevray          #+#    #+#             */
-/*   Updated: 2026/04/02 14:15:56 by selevray         ###   ########.fr       */
+/*   Updated: 2026/04/06 10:39:16 by gujarry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GC_H
 # define GC_H
 
-# include "libft.h"
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <unistd.h>
+# include "../libft/libft.h"
 
 typedef struct s_arena_node
 {

@@ -6,20 +6,20 @@
 /*   By: gujarry <gujarry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 14:11:27 by gujarry           #+#    #+#             */
-/*   Updated: 2026/04/03 14:25:25 by gujarry          ###   ########.fr       */
+/*   Updated: 2026/04/06 10:32:32 by gujarry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lexer.h"
 
 // Crée un nouveau noeud de token
-t_token *create_token(t_token_type type, char *value)
+t_token *create_token(t_gc *gc, t_token_type type, char *value)
 {
-    t_token *new_node = malloc(sizeof(t_token));
+    t_token *new_node = gc_alloc(gc, sizeof(t_token));
     if (!new_node)
         return (NULL);
     new_node->type = type;
-    new_node->value = value; // Attention: il est souvent préférable de faire un strdup(value)
+    new_node->value = value; // value doit aussi avoir été alloué via le gc !
     new_node->next = NULL;
     return (new_node);
 }

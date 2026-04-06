@@ -6,13 +6,12 @@
 /*   By: gujarry <gujarry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 14:23:19 by gujarry           #+#    #+#             */
-/*   Updated: 2026/04/03 14:32:05 by gujarry          ###   ########.fr       */
+/*   Updated: 2026/04/06 10:37:27 by gujarry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lexer.h"
 
-// N'oublie pas de recoder ft_strndup car strndup n'est pas autorisé par la Norme !
 char *ft_strndup(const char *s, int n)
 {
     int i = 0;
