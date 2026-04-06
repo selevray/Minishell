@@ -1,7 +1,10 @@
 #ifndef LEXER_H
 # define LEXER_H
 
-#endif // LEXER_H
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 
 typedef enum e_token_type
 {
@@ -26,3 +29,5 @@ typedef struct s_token
     char             *value;
     struct s_token   *next;
 } t_token;
+
+#endif // LEXER_H

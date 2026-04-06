@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lexer_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gujarry <gujarry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/03 14:11:27 by gujarry           #+#    #+#             */
+/*   Updated: 2026/04/03 14:25:25 by gujarry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/lexer.h"
+
+// Crée un nouveau noeud de token
+t_token *create_token(t_token_type type, char *value)
+{
+    t_token *new_node = malloc(sizeof(t_token));
+    if (!new_node)
+        return (NULL);
+    new_node->type = type;
+    new_node->value = value; // Attention: il est souvent préférable de faire un strdup(value)
+    new_node->next = NULL;
+    return (new_node);
+}
+
+// Ajoute un token à la fin de la liste
+void add_token_back(t_token **head, t_token *new_node)
+{
+    t_token *temp;
+
+    if (!head || !new_node)
+        return;
+    if (*head == NULL)
+    {
+        *head = new_node;
+        return;
+    }
+    temp = *head;
+    while (temp->next)
+        temp = temp->next;
+    temp->next = new_node;
+}
