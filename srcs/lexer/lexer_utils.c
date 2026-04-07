@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gujarry <gujarry@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selevray <selevray@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 14:11:27 by gujarry           #+#    #+#             */
-/*   Updated: 2026/04/06 10:32:32 by gujarry          ###   ########.fr       */
+/*   Updated: 2026/04/07 11:30:07 by selevray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lexer.h"
+#include "lexer.h"
 
 // Crée un nouveau noeud de token
 t_token *create_token(t_gc *gc, t_token_type type, char *value)

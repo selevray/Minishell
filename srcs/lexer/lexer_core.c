@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_core.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gujarry <gujarry@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selevray <selevray@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 14:23:19 by gujarry           #+#    #+#             */
-/*   Updated: 2026/04/06 10:37:27 by gujarry          ###   ########.fr       */
+/*   Updated: 2026/04/07 11:29:56 by selevray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lexer.h"
 
-char *ft_strndup(const char *s, int n)
-{
-    int i = 0;
-    char *dup;
+// char *ft_strndup(const char *s, int n)
+// {
+//     int i = 0;
+//     char *dup;
 
-    dup = malloc(sizeof(char) * (n + 1));
-    if (!dup)
-        return (NULL);
-    while (i < n && s[i])
-    {
-        dup[i] = s[i];
-        i++;
-    }
-    dup[i] = '\0';
-    return (dup);
-}
+//     dup = malloc(sizeof(char) * (n + 1));
+//     if (!dup)
+//         return (NULL);
+//     while (i < n && s[i])
+//     {
+//         dup[i] = s[i];
+//         i++;
+//     }
+//     dup[i] = '\0';
+//     return (dup);
+// }
 
-t_token *get_word_token(char **input)
+t_token *get_word_token(t_gc *gc, char **input)
 {
     int len;
     char *value;
@@ -42,11 +42,13 @@ t_token *get_word_token(char **input)
     // if (len == -1) -> gérer le cas d'erreur de quotes non fermées si tu l'as implémenté
         
     // 2. Extraire la chaîne
-    value = ft_strndup(*input, len);
+    value = gc_alloc(gc, len + 1);
+    ft_strlcpy(value, *input, len);
     
     // 3. Avancer le pointeur principal de la chaîne d'entrée
     *input += len;
     
     // 4. Créer et retourner le token
-    return create_token(TOK_WORD, value);
+    return (create_token(gc, TOK_WORD, value));
 }
+

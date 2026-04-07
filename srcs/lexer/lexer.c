@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gujarry <gujarry@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selevray <selevray@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 13:57:01 by gujarry           #+#    #+#             */
-/*   Updated: 2026/04/03 14:26:18 by gujarry          ###   ########.fr       */
+/*   Updated: 2026/04/07 11:22:29 by selevray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lexer.h"
 
-t_token *tokenize_input(char *input)
+t_token *tokenize_input(t_gc *gc, char *input)
 {
     t_token *token_list = NULL;
     t_token *new_tok = NULL;
