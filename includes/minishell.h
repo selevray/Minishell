@@ -3,6 +3,8 @@
 
 
 #include "gc.h"
+#include "lexer.h"
+
 
 
 #endif // MINISHELL_H

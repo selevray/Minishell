@@ -38,7 +38,22 @@ typedef struct s_ast
 {
 	t_node_type		type;
 	t_cmd *cmd;          // seulement si type == NODE_CMD
-	struct s_ast *left;  // enfant gauche (PIPE, AND, la OR) ou unique enfant (SUBSHELL)
+	struct s_ast *left;  // enfant gauche (PIPE, AND a OR) ou unique enfant (SUBSHELL)
 	struct s_ast *right; // enfant droit  (PIPE, AND, OR) — NULL pour SUBSHELL
 }					t_ast;
+
+/* parser_utils.c */
+size_t				count_tok(t_token *tokens, t_token_type type);
+size_t				count_cmd_words(t_token *tokens);
+t_redir_type		convert_redir_type(t_token_type type);
+int					is_redir(t_token_type tokens);
+t_redir				*parse_redirection(t_gc *gc, t_token **tokens);
+
+/* parser_cmd.c */
+t_ast				*parse_command(t_gc *gc, t_token **tokens);
+
+/* paser.c */
+t_ast				*parse_logical(t_gc *gc, t_token **tokens);
+t_ast				*parse_pipeline(t_gc *gc, t_token **tokens);
+
 #endif // PARSER_H
