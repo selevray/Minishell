@@ -1,0 +1,22 @@
+# Binaires
+.objs/
+minishell
+*.o
+*.a
+*.d
+
+# Éditeurs
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Debug
+*.dSYM/
+core
+vgcore.*
+
+# Temporaires
+/tmp_test*
+*.supp
